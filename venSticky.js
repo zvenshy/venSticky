@@ -18,7 +18,6 @@
 
         var beforeTop = w.scrollTop();
         opts.scrollBox.on('scroll', function () {
-            console.log(box)
             var afterTop = $(this).scrollTop(),
                 detal = afterTop - beforeTop || 0;
             opts.direction = detal >= 0 ? 'down' : 'top';
@@ -40,52 +39,63 @@
 
             direction = opts.direction,
             y = $(this).scrollTop();
-            //console.log(parent, stickyBox, direction, opts.bottom)
-        //direction: 滚动方向
-        if (direction === 'down') {
-            //sticky-box到达父元素底部
-            if (y + winHeight >= bottom) {
-                stickyBox.css({
-                    position: 'absolute',
-                    top: 'auto',
-                    bottom: opts.bottom
-                }); 
-            //sticky-box还未触发sticky条件
-            } else if (y + winHeight < boxHeight + boxTop) {
-                stickyBox.css({
-                    position: 'absolute',
-                    top: boxTop - parTop,
-                    bottom: 'auto'
-                }); 
-            //sticky-box底部fixed
-            } else {
-                stickyBox.css({
-                    position: 'fixed',
-                    top: 'auto',
-                    bottom: opts.bottom
-                }); 
-            }
+        
+        if (boxHeight < winHeight) {
+            console.log(boxHeight, stickyBox)
+            stickyBox.css({
+                position: 'fixed',
+                top: 0
+            });  
         } else {
-            //向上滚
-            //滚动到页首，恢复到默认位置
-            if (y <= parTop) {
-                stickyBox.css({
-                    position: 'static'
-                });
-            //向下滚动过程中向上滚，已到达box顶部
-            } else if (y <= boxTop) {
-                stickyBox.css({
-                    position: 'fixed',
-                    top: 0,
-                    bottom: 'auto'
-                });
-            //向下滚动过程中向上滚，未到达box顶部
+            //direction: 滚动方向
+            if (direction === 'down') {
+                //sticky-box到达父元素底部
+                if (y + winHeight >= bottom) {
+                    console.log('到达底部')
+                    stickyBox.css({
+                        position: 'absolute',
+                        top: 'auto',
+                        bottom: opts.bottom
+                    }); 
+                //sticky-box还未触发sticky条件
+                } else if (y + winHeight < boxHeight + boxTop) {
+                    console.log('保持原位')
+                    stickyBox.css({
+                        position: 'absolute',
+                        top: boxTop - parTop,
+                        bottom: 'auto'
+                    }); 
+                //sticky-box底部fixed
+                } else {
+                    console.log('fixed!')
+                    stickyBox.css({
+                        position: 'fixed',
+                        top: 'auto',
+                        bottom: opts.bottom
+                    }); 
+                }
             } else {
-                stickyBox.css({
-                    position: 'absolute',
-                    top: boxTop - parTop,
-                    bottom: 'auto'
-                }); 
+                //向上滚
+                //滚动到页首，恢复到默认位置
+                if (y <= parTop) {
+                    stickyBox.css({
+                        position: 'static'
+                    });
+                //向下滚动过程中向上滚，已到达box顶部
+                } else if (y <= boxTop) {
+                    stickyBox.css({
+                        position: 'fixed',
+                        top: 0,
+                        bottom: 'auto'
+                    });
+                //向下滚动过程中向上滚，未到达box顶部
+                } else {
+                    stickyBox.css({
+                        position: 'absolute',
+                        top: boxTop - parTop,
+                        bottom: 'auto'
+                    }); 
+                }
             }
         }
         stickyBox.css('width', width);

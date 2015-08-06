@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+    <meta name="keywords" content="venSticky">
+    <meta name="description" content="venSticky test page">
+    <meta name="author" content="zvenshy@gmail.com">
+	<title>venSticky</title>
+	<script type="text/javascript" src="./jquery.js"></script>
+	<script type="text/javascript" src="../venSticky.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.sidebar-inner').venSticky();
+			$('.content p').venSticky();
+		});
+	</script>
+	<style type="text/css">
+		.body {
+			width: 800px;
+			margin: 0 auto;
+			height: auto;
+			border: 1px solid #000;
+			font-size: 24px;
+			position: relative;
+		}
+			.sidebar {
+				border: 1px solid red;
+				height: 1600px;
+				width: 30%;
+				position: absolute;
+			}
+			.content {
+				border: 1px solid red;
+				height: 1600px;
+				width: 65%;
+				margin-left: 32%;
+			}
+	</style>
+</head>
+<body>
+	<div class="body">
+		<div class="sidebar">
+			<div class="sidebar-inner">
+				<ul>
+					<li>itemTop</li>
+					<li>item2</li>
+					<li>item3</li>
+					<li>item2</li>
+					<li>item3</li>
+					<li>item4</li>
+					<li>itemBottom</li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<p>content</p>
+		</div>	
+	</div>
+</body>
+</html>
