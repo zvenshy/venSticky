@@ -1,6 +1,8 @@
 # venSticky
 一个通用的sticky jQuery插件
 
+##下载
+`bower install venSticky`
 
 ## Example
 ` $('#sticky-box').venSticky(); `
