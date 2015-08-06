@@ -1,7 +1,7 @@
 # venSticky
 一个通用的sticky jQuery插件
 
-##下载
+## Bower
 `bower install venSticky`
 
 ## Example
