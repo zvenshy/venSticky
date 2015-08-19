@@ -41,7 +41,6 @@
             y = $(this).scrollTop();
         
         if (boxHeight < winHeight) {
-            console.log(boxHeight, stickyBox)
             stickyBox.css({
                 position: 'fixed',
                 top: 0
@@ -51,7 +50,6 @@
             if (direction === 'down') {
                 //sticky-box到达父元素底部
                 if (y + winHeight >= bottom) {
-                    console.log('到达底部')
                     stickyBox.css({
                         position: 'absolute',
                         top: 'auto',
@@ -59,7 +57,6 @@
                     }); 
                 //sticky-box还未触发sticky条件
                 } else if (y + winHeight < boxHeight + boxTop) {
-                    console.log('保持原位')
                     stickyBox.css({
                         position: 'absolute',
                         top: boxTop - parTop,
@@ -67,7 +64,6 @@
                     }); 
                 //sticky-box底部fixed
                 } else {
-                    console.log('fixed!')
                     stickyBox.css({
                         position: 'fixed',
                         top: 'auto',
