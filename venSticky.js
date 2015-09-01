@@ -67,7 +67,7 @@
                     stickyBox.css({
                         position: 'fixed',
                         top: 'auto',
-                        bottom: opts.bottom
+                        bottom: 0
                     }); 
                 }
             } else {
