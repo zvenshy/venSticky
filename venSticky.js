@@ -40,11 +40,26 @@
             direction = opts.direction,
             y = $(this).scrollTop();
         
+        //高度不够
         if (boxHeight < winHeight) {
-            stickyBox.css({
-                position: 'fixed',
-                top: 0
-            });  
+            //滚动到页首，恢复到默认位置
+            if (y <= parTop) {
+                stickyBox.css({
+                    position: 'static'
+                });
+            //到达父元素底部
+            } else if (y + boxHeight >= bottom - opts.bottom) {
+                stickyBox.css({
+                    position: 'absolute',
+                    top: 'auto',
+                    bottom: opts.bottom + 'px'
+                }); 
+            }else {
+                stickyBox.css({
+                    position: 'fixed',
+                    top: 0
+                });
+            }
         } else {
             //direction: 滚动方向
             if (direction === 'down') {
@@ -53,7 +68,7 @@
                     stickyBox.css({
                         position: 'absolute',
                         top: 'auto',
-                        bottom: opts.bottom
+                        bottom: opts.bottom + 'px'
                     }); 
                 //sticky-box还未触发sticky条件
                 } else if (y + winHeight < boxHeight + boxTop) {
@@ -97,4 +112,3 @@
         stickyBox.css('width', width);
     }
 }).call(this);
-
