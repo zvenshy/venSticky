@@ -9,6 +9,6 @@
 
 ## Options (Object)
 ` $('#sticky-box').venSticky(options); `
-- `scrollBox` 用于传入scroll事件绑定的DOM对象,Default: window
+- `scrollBox` 用于传入scroll事件绑定的DOM对象,Default: $(window)
 - `parent` 设置stickyBox的容器元素,Defaule: stickyBox.parent()
-- `bottom` 设置底部粘滞时与容器底部的间距
+- `bottom` Number. 设置底部粘滞时与容器底部的间距
