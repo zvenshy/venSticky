@@ -57,7 +57,8 @@
             }else {
                 stickyBox.css({
                     position: 'fixed',
-                    top: 0
+                    top: 0,
+                    bottom: 'auto'
                 });
             }
         } else {
